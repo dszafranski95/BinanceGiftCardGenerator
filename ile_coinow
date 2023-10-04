@@ -1,0 +1,24 @@
+from binance.spot import Spot as Client
+
+# wprowadź klucz API i sekret
+api_key = "DutmnemngmgLDKph8GfwBUPx5LuAcoBMpTaBgXqXRhrnPnUHkU3thggOLV3mCCvw"
+api_secret = "t4vwpHczIvtiwWZ9E1qPcplZGQ5AAq89M6v900TZhzdLiq8aXcjCgOwUyCkbA7ob"
+
+# stwórz klienta Binance
+client = Client(api_key, api_secret)
+
+# wybierz walutę i kwotę karty podarunkowej
+currency = 'ETH'
+amount = '0.0001'
+
+# określ parametry karty podarunkowej
+params = {
+    'token': currency,
+    'amount': amount
+}
+
+# utwórz kod karty podarunkowej
+response = client.gift_card_create_code(**params)
+
+# wydrukuj kod karty podarunkowej
+print(response['giftCardCode'])
